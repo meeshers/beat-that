@@ -18,3 +18,40 @@
 // after clicking next round/final score, the cpu and player dice will clear to either start the next game or display the results
 
 // after all rounds played, it will display the overall winner
+
+//create the dice - dice needs to have the ability to roll random number from 1 to 6
+//create an array of the dice images?
+
+const Dice = {
+  rollDice() {
+    const numberRoll = Math.floor(Math.random() * 5) + 1;
+    return numberRoll;
+  }
+}
+
+class Player {
+  constructor(name){
+    this.name = name;
+    this.roundsWon = 0;
+  }
+  rollNumDice(num){
+    // probably accept a num param for how many dice to create?
+    for(let i = 0; i < num; i++){
+      rollDice();
+    }
+
+  }
+  addRound(){
+    this.roundsWon++;
+  }
+}
+
+class CPU extends Player {
+  constructor(name){
+    this.name = "CPU";
+    this.roundsWon = 0;
+  }
+  playDice(){
+    //insert function here to play largest value
+  }
+}

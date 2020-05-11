@@ -1,0 +1,22 @@
+body {
+  color: #f1f1f1;
+  background-color: #3b770a;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  border-radius: 25px;
+  padding: 5px;
+  margin: 5px;
+}
+
+h1, p{
+  text-align: center;
+}
