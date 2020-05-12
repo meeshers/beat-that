@@ -98,7 +98,7 @@ const cpu = {
     //this one will automatically sort values from highest to loweset
     let test  = this.rollArray.sort(function(a,b){return b-a}).join("");
     cpuAnswer = test;
-    console.log(cpuAnswer);
+    //console.log(cpuAnswer);
     return test;
   },
   addRound(){
@@ -112,9 +112,9 @@ const cpu = {
 
 //compare values to display who wins
 function compare(){
-  console.log(cpu.cpuAnswer);
-  console.log(player.playerResponse.value);
-  if(cpu.cpuAnswer > player.playerResponse.value){
+  console.log(parseInt(cpu.playDice()));
+  console.log(parseInt(player.playerResponse.value));
+  if(parseInt(cpu.playDice()) > parseInt(player.playerResponse.value)){
     $('.result').append(`CPU wins!`);
   } else if (player.playerResponse > cpu.cpuAnswer){
     $('.result').append('You win!');

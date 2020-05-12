@@ -50,6 +50,7 @@ $('.submit').on("click",function(event){
   $('.submit').hide();
   $('.player-answer').hide();
   compare();
+  $('result').show();
 })
 
 // clicking on next round should clear both player-dice and cpu-dice 
@@ -61,6 +62,7 @@ $('.next').on("click",function(event){
   $('.roll').show();
   $('submit').show();
   $('.next').hide();
+  $('.result').empty();
   $('.result').hide();
 })
 
