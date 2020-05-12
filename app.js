@@ -34,26 +34,12 @@ const diceArray = [
 
 let roundsPlayed = 0;
 
-
-/* const dice = {
-  numberRoll: 1,
-  rollDice() {
-    this.numberRoll = Math.floor(Math.random() * 6) + 1;
-  },
-  createDice(num) {
-    for(let i = 0; i < num; i++){
-      this.rollDice();
-      const $create = $(`<div class='${this.numberRoll}'>${diceArray[this.numberRoll-1]}</div>`);
-      //$('.player-dice').append($create);
-    }
-  }
-} */
-
 const player = {
   roundsWon: 0,
   name: "You",
   numberRoll: 1,
   rollArray: [],
+  playerResponse: "",
   rollDice() {
     this.numberRoll = Math.floor(Math.random() * 6) + 1;
   },
@@ -69,7 +55,26 @@ const player = {
 
   addRound(){
     this.roundsWon++;
-  }
+  },
+
+ /*  clickDice(event) {
+    if(event.target.classList.contains("picked") === false){
+      //let pickedArray = [];
+      $(event.target).addClass("picked");
+      console.log(event.target);
+      this.playerArray.push("1");
+    }
+
+    
+      console.log(this.playerArray);
+  }, */
+
+ /*  retrieveClicks(){
+    for(let i = 0; i < this.rollArray.length; i++){
+      console.log($('span').get(i));
+    }
+  }, */
+
 }
 
 const cpu = {
@@ -77,6 +82,7 @@ const cpu = {
   name: "CPU",
   numberRoll: 1,
   rollArray: [],
+  cpuAnswer: "",
   rollDice() {
     this.numberRoll = Math.floor(Math.random() * 6) + 1;
   },
@@ -90,10 +96,44 @@ const cpu = {
   },
   playDice(){
     //this one will automatically sort values from highest to loweset
-    cpuAnswer = this.rollArray.sort(function(a,b){return b-a}).join("");
-    return cpuAnswer;
+    let test  = this.rollArray.sort(function(a,b){return b-a}).join("");
+    cpuAnswer = test;
+    console.log(cpuAnswer);
+    return test;
   },
   addRound(){
     this.roundsWon++;
+  },
+
+  clearArray(){
+    this.rollArray.splice(0,this.rollArray.length);
   }
 }
+
+//compare values to display who wins
+function compare(){
+  console.log(cpu.cpuAnswer);
+  console.log(player.playerResponse.value);
+  if(cpu.cpuAnswer > player.playerResponse.value){
+    $('.result').append(`CPU wins!`);
+  } else if (player.playerResponse > cpu.cpuAnswer){
+    $('.result').append('You win!');
+  } else {
+    $('.result').append(`Tie! No points awarded`);
+  }
+
+}
+
+//this will take in user input for the dice
+// TODO: work on clearing the field
+const submit = document.querySelector(".submit");
+submit.addEventListener("click", function(event){
+  const p = document.createElement('p');
+  player.playerResponse = document.querySelector('.player-answer');
+  p.textContent = `You played ${player.playerResponse.value}`;
+  const dice = document.querySelector('.player-dice');
+  dice.append(p);
+});
+
+
+
