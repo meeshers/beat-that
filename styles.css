@@ -1,22 +1,62 @@
 body {
   color: #f1f1f1;
   background-color: #3b770a;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "mon", Helvetica, sans-serif;
+
 }
 
+div {
+  margin: 0;
+  padding: 0;
+}
 .container{
-
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
+/* look into gradients! */
 button {
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 5px;
   margin: 5px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
 }
 
-h1, p{
+body, h1, p{
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
+
+h1 {
+  margin-bottom: 0;
+}
+
+h3 {
+  margin-top: 10px;
+}
+
+
+.container i  {
+  font-size: 250px;
+  margin-bottom: 50px;
+}
+
+.player i, .cpu i {
+  font-size: 75px;
+}
+
+.player-dice span:hover{
+  color: yellow;
+  cursor: pointer;
+}
+
+span {
+  margin: 5px;
+  padding: 5px;
+}
+

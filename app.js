@@ -1,3 +1,4 @@
+console.log("app.js connected");
 /* <!--  USER STORIES  -->
 - There will be a "start" button along with "roll" and "submit"
 - Game is played with minimum of 2 dice
@@ -20,38 +21,79 @@
 // after all rounds played, it will display the overall winner
 
 //create the dice - dice needs to have the ability to roll random number from 1 to 6
-//create an array of the dice images?
+//create an array of the dice images to call into rollDice
 
-const Dice = {
+const diceArray = [ 
+`<i class="fas fa-dice-one"></i>`, 
+`<i class="fas fa-dice-two"></i>`,
+`<i class="fas fa-dice-three"></i>`,
+`<i class="fas fa-dice-four"></i>`,
+`<i class="fas fa-dice-five"></i>`,
+`<i class="fas fa-dice-six"></i>`
+];
+
+let roundsPlayed = 0;
+
+
+/* const dice = {
+  numberRoll: 1,
   rollDice() {
-    const numberRoll = Math.floor(Math.random() * 5) + 1;
-    return numberRoll;
-  }
-}
-
-class Player {
-  constructor(name){
-    this.name = name;
-    this.roundsWon = 0;
-  }
-  rollNumDice(num){
-    // probably accept a num param for how many dice to create?
+    this.numberRoll = Math.floor(Math.random() * 6) + 1;
+  },
+  createDice(num) {
     for(let i = 0; i < num; i++){
-      rollDice();
+      this.rollDice();
+      const $create = $(`<div class='${this.numberRoll}'>${diceArray[this.numberRoll-1]}</div>`);
+      //$('.player-dice').append($create);
     }
-
   }
+} */
+
+const player = {
+  roundsWon: 0,
+  name: "You",
+  numberRoll: 1,
+  rollArray: [],
+  rollDice() {
+    this.numberRoll = Math.floor(Math.random() * 6) + 1;
+  },
+
+  createDice(num) {
+    for(let i = 0; i < num; i++){
+      this.rollDice();
+      const $create = $(`<span class='${this.numberRoll}'>${diceArray[this.numberRoll-1]}</span>`);
+      $('.player-dice').append($create);
+      this.rollArray.push(this.numberRoll);
+    }
+  },
+
   addRound(){
     this.roundsWon++;
   }
 }
 
-class CPU extends Player {
-  constructor(name){
-    this.name = "CPU";
-    this.roundsWon = 0;
-  }
+const cpu = {
+  roundsWon: 0,
+  name: "CPU",
+  numberRoll: 1,
+  rollArray: [],
+  rollDice() {
+    this.numberRoll = Math.floor(Math.random() * 6) + 1;
+  },
+  createDice(num) {
+    for(let i = 0; i < num; i++){
+      this.rollDice();
+      const $create = $(`<span class='${this.numberRoll}'>${diceArray[this.numberRoll-1]}</span>`);
+      $('.cpu-dice').append($create);
+      this.rollArray.push(this.numberRoll);
+    }
+  },
   playDice(){
-    //insert function here to play largest value
+    //this one will automatically sort values from highest to loweset
+    cpuAnswer = this.rollArray.sort(function(a,b){return b-a}).join("");
+    return cpuAnswer;
+  },
+  addRound(){
+    this.roundsWon++;
   }
 }
