@@ -12,19 +12,22 @@
   <script src="app.js" defer></script>
   <script src="dom.js" defer></script>
 </head>
+
 <header>
   <h1>Beat That!</h1>
   <h3>A dice game</h3>
 </header>
+
 <body>
   <!-- container div holding game -->
   <div class="container">
     <i class="fas fa-dice"></i>
+
     <!-- cpu div of dice -->
     <div class="cpu">
       <h3 class="cpu-p">CPU's dice</h3>
-      <div class="cpu-dice"></div>
-
+      <div class="cpu-dice">
+      </div>
     </div>
 
     <!-- div separating the dice containing results & next round button -->
@@ -34,30 +37,33 @@
     </div>
 
     <!-- player div of dice -->
-    
     <div class="player">
       <h3 class="player-p">Player's dice</h3>
       <div class="player-dice"></div>
       <input class="player-answer" type="text" placeholder="Please type in response here" required></input>
-      
       <button class="roll">Roll dice</button>
       <button type="submit" class="submit">Submit dice</button>
     </div>
     <!-- another div for buttons and current score? -->
+    <div class="scores">
+      
+    </div>
 
-  </div>
-
-  <div class="buttons"></div>
+  <div class="buttons">
     <button class="start">Play game</button>
     <button class="directions">How to Play</button>
     <div class="how-to-play">
-      <p><ol>
+      <p>
+      <ol>
         <li>The objective of the game is to roll and create the highest number.</li>
         <li>Each dice is considered its own entity.</li>
         <li>For example: if player rolls a 4 and a 6, the highest number they can create 64.</li>
-        <li>The player that rolls and creates the highest number wins the round.  The game ends after 3 rounds.</li>
-      </ol></p>
+        <li>The player that rolls and creates the highest number wins the round. The game ends after 3 rounds.</li>
+      </ol>
+      </p>
     </div>
+  </div>
+
   </div>
 
 </body>

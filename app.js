@@ -1,27 +1,4 @@
 console.log("app.js connected");
-/* <!--  USER STORIES  -->
-- There will be a "start" button along with "roll" and "submit"
-- Game is played with minimum of 2 dice
-- User/cpu will roll the set of die
-- The goal of the game is to have the biggest number with the dice roll
-    for example: user rolls a 2/3: They can make either 32 or 23. cpu rolls 4/6: 64, cpu wins
-- user will have control over the number they create
-- There will be 3 rounds, winner is whoever won the most rounds */
-
-//Start button will initiate the game 
-
-// roll button will roll the player's dice and allow the player to try to create the biggest number with their dice
-
-// submit button will submit the player's answer. it will also trigger the cpu's dice roll and compare their submission to the cpu's highest value
-
-// after the comparison, score will update and display winner of the match. There will be a "next round" or "final scores" depending on how many rounds were played
-
-// after clicking next round/final score, the cpu and player dice will clear to either start the next game or display the results
-
-// after all rounds played, it will display the overall winner
-
-//create the dice - dice needs to have the ability to roll random number from 1 to 6
-//create an array of the dice images to call into rollDice
 
 const diceArray = [ 
 `<i class="fas fa-dice-one"></i>`, 
@@ -57,7 +34,7 @@ const player = {
     this.roundsWon++;
   },
 
- /*  clickDice(event) {
+/*   clickDice(event) {
     if(event.target.classList.contains("picked") === false){
       //let pickedArray = [];
       $(event.target).addClass("picked");
@@ -116,12 +93,17 @@ function compare(){
   console.log(parseInt(player.playerResponse.value));
   if(parseInt(cpu.playDice()) > parseInt(player.playerResponse.value)){
     $('.result').append(`CPU wins!`);
+    cpu.addRound();
+    console.log(`cpu rounds: ${cpu.roundsWon}`);
   } else if (player.playerResponse > cpu.cpuAnswer){
     $('.result').append('You win!');
+    player.addRound();
+    console.log(`player rounds ${player.roundsWon}`);
+    $('.score').append(`Current score: ${player.roundsWon} | Rounds played: ${roundsPlayed}`);
   } else {
     $('.result').append(`Tie! No points awarded`);
   }
-
+  roundsPlayed++;
 }
 
 //this will take in user input for the dice
@@ -134,6 +116,4 @@ submit.addEventListener("click", function(event){
   const dice = document.querySelector('.player-dice');
   dice.append(p);
 });
-
-
 
