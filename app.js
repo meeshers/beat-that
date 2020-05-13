@@ -42,7 +42,6 @@ const player = {
       this.playerArray.push("1");
     }
 
-    
       console.log(this.playerArray);
   }, */
 
@@ -51,7 +50,6 @@ const player = {
       console.log($('span').get(i));
     }
   }, */
-
 }
 
 const cpu = {
@@ -89,21 +87,20 @@ const cpu = {
 
 //compare values to display who wins
 function compare(){
-  console.log(parseInt(cpu.playDice()));
-  console.log(parseInt(player.playerResponse.value));
+/*   console.log(parseInt(cpu.playDice()));
+  console.log(parseInt(player.playerResponse.value)); */
   if(parseInt(cpu.playDice()) > parseInt(player.playerResponse.value)){
-    $('.result').append(`CPU wins!`);
     cpu.addRound();
-    console.log(`cpu rounds: ${cpu.roundsWon}`);
+    $('.result').append(`<p>CPU wins!</p>`);
   } else if (player.playerResponse > cpu.cpuAnswer){
-    $('.result').append('You win!');
     player.addRound();
-    console.log(`player rounds ${player.roundsWon}`);
-    $('.score').append(`Current score: ${player.roundsWon} | Rounds played: ${roundsPlayed}`);
+    $('.result').append(`<p>You win!</p>`);
   } else {
     $('.result').append(`Tie! No points awarded`);
   }
   roundsPlayed++;
+  $('.scores').append(`<p>Player score: ${player.roundsWon} | CPU score: ${cpu.roundsWon} | Rounds played: ${roundsPlayed}</p>`);
+
 }
 
 //this will take in user input for the dice
@@ -116,4 +113,5 @@ submit.addEventListener("click", function(event){
   const dice = document.querySelector('.player-dice');
   dice.append(p);
 });
+
 

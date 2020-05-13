@@ -10,7 +10,8 @@ $('.cpu-p').hide();
 $('.player-answer').hide();
 $('.scores').hide();
 $('.cpu-dice').hide();
-//$('.aaa').hide();
+$('.player-dice').hide();
+
 
 //these will show up after player presses start
 function showAll() {
@@ -18,6 +19,7 @@ function showAll() {
   $('.player-p').show();
   $('.cpu-dice').show();
   $('.cpu-p').show();
+  $('.player-dice').show();
 }
 
 
@@ -26,7 +28,11 @@ function showAll() {
 $('.start').on("click", function (event) {
   $('.buttons').hide();
   $('i').hide();
+  $('.scores').show();
   showAll();
+  //insert gameStart here
+  gameStart();
+  console.log("start clicked");
 });
 
 //this will have the directions appear at the bottom
@@ -37,28 +43,27 @@ $('.directions').on("click", function (event) {
 /* PLAYER SCREEN */
 //this will create the number of dices
 $('.roll').on("click", function (event) {
+  //$('.cpu-dice').empty();
+  cpu.clearArray();
+  $('.player-dice').empty();
   $('.player-dice').append(player.createDice(3));
   $('.player-answer').show();
   $('.roll').hide();
   $('.submit').show();
-  //$('.aaa').show();
+  console.log("roll clicked");
 })
 
 //after they submit, they can start on the next round
 $('.submit').on("click", function (event) {
-  if(roundsPlayed<4){
-    $('.cpu-dice').empty();
-    $('.cpu-dice').append(cpu.createDice(3));
-    $('.cpu-dice').append(`<p>CPU plays ${cpu.playDice()}</p>`);
-    $('.next').show();
-    $('.submit').hide();
-    $('.player-answer').hide();
-    compare();
-    $('.result').show();
-    $('.scores').show()
-  } else {
-    $('.result').append("Afhadgasdf");
-  }
+  $('.cpu-dice').empty();
+  $('.cpu-dice').append(cpu.createDice(3));
+  $('.cpu-dice').append(`<p>CPU plays ${cpu.playDice()}</p>`);
+  $('.next').show();
+  $('.submit').hide();
+  $('.player-answer').hide();
+  compare();
+  $('.result').show();
+
   console.log(`rounds played ${roundsPlayed}`);
 
 })
@@ -66,26 +71,17 @@ $('.submit').on("click", function (event) {
 // clicking on next round should clear both player-dice and cpu-dice 
 // need to add a check for rounds functionality
 $('.next').on("click", function (event) {
-  if (roundsPlayed < 4) {
-    $('.cpu-dice').empty();
-    cpu.clearArray();
-    $('.player-dice').empty();
-    $('.roll').show();
-    $('submit').show();
-    $('.next').hide();
-    $('.result').empty();
-    $('.result').hide();
-  } else {
-    $('.roll').hide();
-    $('.submit').hide();
-    $('.player-p').hide();
-    $('.how-to-play').hide();
-    $('.next').hide();
-    $('.cpu-p').hide();
-    $('.player-answer').hide();
-    $('.scores').hide();
-    $('.result').append("alsdkjlakj");
-  }
-
+  $('.roll').show();
+  $('submit').show();
+  $('.scores').empty();
+  $('.result').empty();
+  $('.result').hide();
+  console.log("next clicked");
 })
+
+function gameStart() {
+  // empty cpu and player dice container
+  // need recurring 
+
+}
 
