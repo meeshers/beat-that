@@ -36,16 +36,62 @@ const player = {
   },
 
   clickDice(event) {
+    const e = event;
     if (event.target.classList.contains("picked") === false) {
-      console.log(event.target);
+      //console.log(event.target);
       $(event.target).addClass("picked");
-
+      // playerArray=[];
       // handle the clicked object input
-      if (event.target.classList.contains("one") === true) {
-        this.playerArray.push(1);
+      if (event.target.classList.contains("fa-dice-one") === true) {
+        player.playerArray.push(1);
+      } else if(event.target.classList.contains("fa-dice-two")===true){
+        player.playerArray.push(2);
+      } else if(event.target.classList.contains("fa-dice-three")===true){
+        player.playerArray.push(3);
+      } else if(event.target.classList.contains("fa-dice-four")===true){
+        player.playerArray.push(4);
+      } else if(event.target.classList.contains("fa-dice-five")===true){
+        player.playerArray.push(5);
+      } else if(event.target.classList.contains("fa-dice-six")===true){
+        player.playerArray.push(6);
       }
+    console.log(player.playerArray);
+    //return player.playerArray;
+      if(player.playerArray.length === 3){
+          $('.player-dice').append(`<p class="aaa">${player.playerArray[0]}${player.playerArray[1]}${player.playerArray[2]}</p>`);
+      }
+    } else if(event.target.classList.contains("picked") === true){
+      player.clearDice(e);
     }
-    console.log(this.playerArray);
+
+  },
+
+  clearDice(event) {
+    console.log(`This is the event: `, event);
+    if(event.target.classList.contains("picked") === true) {
+      //console.log(event.target);
+      $(event.target).removeClass("picked");
+      //console.log("lkajdf");
+      if (event.target.classList.contains("fa-dice-one") === true) {
+        player.playerArray = player.playerArray.filter(num => num !== 1);
+      } else if(event.target.classList.contains("fa-dice-two")===true){
+        player.playerArray =player.playerArray.filter(num => num !== 2);
+      } else if(event.target.classList.contains("fa-dice-three")===true){
+        player.playerArray =player.playerArray.filter(num => num !== 3);
+      } else if(event.target.classList.contains("fa-dice-four")===true){
+        player.playerArray =player.playerArray.filter(num => num!== 4);
+      } else if(event.target.classList.contains("fa-dice-five")===true){
+        player.playerArray =player.playerArray.filter(num => num!== 5);
+      } else if(event.target.classList.contains("fa-dice-six")===true){
+        player.playerArray =player.playerArray.filter(num => num !== 6);
+      }
+      console.log(player.playerArray);
+      $('.aaa').empty();
+  }
+},
+
+    clearArray() {
+    this.playerArray.splice(0, this.rollArray.length);
   }
 }
 
@@ -86,7 +132,9 @@ const cpu = {
 function compare() {
   /*   console.log(parseInt(cpu.playDice()));
     console.log(parseInt(player.playerResponse.value)); */
-  if (parseInt(cpu.playDice()) > parseInt(player.playerResponse.value)) {
+
+
+  if (parseInt(cpu.playDice()) > parseInt(player.playerArray.join(""))) {
     cpu.addRound();
     $('.result').append(`<p>CPU wins!</p>`);
   } else if (player.playerResponse > cpu.cpuAnswer) {
@@ -115,8 +163,8 @@ function declareWinner() {
 const submit = document.querySelector(".submit");
 submit.addEventListener("click", function (event) {
   const p = document.createElement('p');
-  player.playerResponse = document.querySelector('.player-answer');
-  p.textContent = `You played ${player.playerResponse.value}`;
+  //player.playerResponse = document.querySelector('.player-answer');
+  p.textContent = `You played ${player.playerArray.join("")}`;
   const dice = document.querySelector('.player-dice');
   dice.append(p);
 });
