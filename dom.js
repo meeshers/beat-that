@@ -48,7 +48,7 @@ $('.roll').on("click", function (event) {
   cpu.clearArray();
   $('.player-dice').empty();
   $('.player-dice').append(player.createDice(3));
-  $('.player-answer').show();
+  //$('.player-answer').show();
   $('.roll').hide();
   $('.submit').show();
   console.log("roll clicked");
@@ -61,12 +61,13 @@ $('.submit').on("click", function (event) {
   $('.cpu-dice').append(`<p>CPU plays ${cpu.playDice()}</p>`);
   $('.next').show();
   $('.submit').hide();
-  $('.player-answer').hide();
+  $('.aaa').hide();
+  //$('.player-answer').hide();
   compare();
   $('.result').show();
-  $('.form').each(function(){
-    this.reset();
-  })
+  // $('.form').each(function(){
+  //   this.reset();
+  // })
   console.log(`rounds played ${roundsPlayed}`);
 
 })
@@ -81,11 +82,18 @@ $('.next').on("click", function (event) {
     $('.result').empty();
     $('.result').hide();
     $('p').hide();
+    player.clearArray();
     console.log("next clicked");
-  } else {
+    if(roundsPlayed ===2 ) {
+
+    $('.next').text('Final result');
+  }
+  } 
+  else {
     $('.container').empty();
     $('.container').append('<h2>GAME OVER!</h2>');
     declareWinner();
     $('.refresh').show();
   }
 })
+
