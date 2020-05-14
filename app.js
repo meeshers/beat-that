@@ -2,11 +2,11 @@ console.log("app.js connected");
 
 const diceArray = [
   `<i class="fas fa-dice-one flip-horizontal-top"></i>`,
-  `<i class="fas fa-dice-two flip-2-ver-right-1"></i>`,
+  `<i class="fas fa-dice-two flip-2-ver-right-2"></i>`,
   `<i class="fas fa-dice-three flip-horizontal-top"></i>`,
-  `<i class="fas fa-dice-four flip-2-ver-right-1"></i>`,
+  `<i class="fas fa-dice-four flip-2-ver-right-2"></i>`,
   `<i class="fas fa-dice-five flip-horizontal-top"></i>`,
-  `<i class="fas fa-dice-six flip-2-ver-right-1"></i>`
+  `<i class="fas fa-dice-six flip-2-ver-right-2"></i>`
 ];
 
 let roundsPlayed = 0;

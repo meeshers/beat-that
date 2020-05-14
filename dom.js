@@ -28,7 +28,7 @@ function showAll() {
 //this will initiate gameplay
 $('.start').on("click", function (event) {
   $('.buttons').hide();;
-  $('i').hide();
+  $('.fa-dice').hide();
   $('how-to-play').hide();
   $('.scores').show();
   $('.cpu-dice').show();
