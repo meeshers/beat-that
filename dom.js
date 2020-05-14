@@ -11,6 +11,7 @@ $('.player-answer').hide();
 $('.scores').hide();
 $('.cpu-dice').hide();
 $('.player-dice').hide();
+$('.refresh').hide();
 
 
 //these will show up after player presses start
@@ -26,8 +27,9 @@ function showAll() {
 /* STARTING SCREEN */
 //this will initiate gameplay
 $('.start').on("click", function (event) {
-  $('.buttons').hide();
+  $('.buttons').hide();;
   $('i').hide();
+  $('how-to-play').hide();
   $('.scores').show();
   $('.cpu-dice').show();
   showAll();
@@ -75,7 +77,6 @@ $('.next').on("click", function (event) {
   if(roundsPlayed<3){
     $('.roll').show();
     $('submit').show();
-    $('.scores').empty();
     $('.next').hide();
     $('.result').empty();
     $('.result').hide();
@@ -85,6 +86,7 @@ $('.next').on("click", function (event) {
     $('.container').empty();
     $('.container').append('<h2>GAME OVER!</h2>');
     declareWinner();
+    $('.refresh').show();
     //$('.next').text('Final result');
   }
 

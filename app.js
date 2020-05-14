@@ -90,7 +90,7 @@ function compare(){
     $('.result').append(`Tie! No points awarded`);
   }
   roundsPlayed++;
-  $('.scores').append(`<p>Player score: ${player.roundsWon} | CPU score: ${cpu.roundsWon} | Rounds played: ${roundsPlayed}</p>`);
+  $('.scores').text(`Player score: ${player.roundsWon} | CPU score: ${cpu.roundsWon} | Rounds played: ${roundsPlayed}`);
 
 }
 
