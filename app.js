@@ -16,7 +16,6 @@ const player = {
   name: "You",
   numberRoll: 1,
   rollArray: [],
-  playerResponse: "",
   playerArray: [],
   rollDice() {
     this.numberRoll = Math.floor(Math.random() * 6) + 1;
@@ -55,10 +54,9 @@ const player = {
       } else if(event.target.classList.contains("fa-dice-six")===true){
         player.playerArray.push(6);
       }
-    console.log(player.playerArray);
-    //return player.playerArray;
-      if(player.playerArray.length === 3){
-          $('.player-dice').append(`<p class="aaa">${player.playerArray[0]}${player.playerArray[1]}${player.playerArray[2]}</p>`);
+
+      if(player.playerArray.length === 5){
+          $('.player-dice').append(`<p class="aaa">${player.playerArray[0]}${player.playerArray[1]}${player.playerArray[2]}${player.playerArray[3]}${player.playerArray[4]}</p>`);
       }
     } else if(event.target.classList.contains("picked") === true){
       player.clearDice(e);
@@ -136,12 +134,12 @@ function compare() {
 
   if (parseInt(cpu.playDice()) > parseInt(player.playerArray.join(""))) {
     cpu.addRound();
-    $('.result').append(`<p>CPU wins!</p>`);
-  } else if (player.playerResponse > cpu.cpuAnswer) {
+    $('.result').append(`<h3>CPU wins!</h3>`);
+  } else if (parseInt(cpu.playDice()) < parseInt(player.playerArray.join(""))) {
     player.addRound();
-    $('.result').append(`<p>You win!</p>`);
+    $('.result').append(`<h3>You win!</h3>`);
   } else {
-    $('.result').append(`Tie! No points awarded`);
+    $('.result').append(`<h3>Tie! No points awarded`);
   }
   roundsPlayed++;
   $('.scores').text(`Player score: ${player.roundsWon} | CPU score: ${cpu.roundsWon} | Rounds played: ${roundsPlayed}`);
@@ -151,8 +149,10 @@ function compare() {
 function declareWinner() {
   if (cpu.roundsWon > player.roundsWon) {
     $('.container').append(`CPU WINS THE GAME!`);
+    $('.container').append(`CPU won ${cpu.roundsWon} rounds!`);
   } else if (player.roundsWon > cpu.roundsWon) {
     $('.container').append('YOU WIN THE GAME!');
+    $('.container').append(` You won ${player.roundsWon} rounds!`);
   } else {
     $('.container').append('TIE! NO ONE WINS');
   }

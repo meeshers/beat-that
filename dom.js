@@ -12,6 +12,8 @@ $('.scores').hide();
 $('.cpu-dice').hide();
 $('.player-dice').hide();
 $('.refresh').hide();
+$('h4').hide();
+$('.result').hide();
 
 
 //these will show up after player presses start
@@ -47,7 +49,7 @@ $('.roll').on("click", function (event) {
   //$('.cpu-dice').empty();
   cpu.clearArray();
   $('.player-dice').empty();
-  $('.player-dice').append(player.createDice(3));
+  $('.player-dice').append(player.createDice(5));
   //$('.player-answer').show();
   $('.roll').hide();
   $('.submit').show();
@@ -57,14 +59,15 @@ $('.roll').on("click", function (event) {
 //after they submit, they can start on the next round
 $('.submit').on("click", function (event) {
   $('.cpu-dice').empty();
-  $('.cpu-dice').append(cpu.createDice(3));
-  $('.cpu-dice').append(`<p>CPU plays ${cpu.playDice()}</p>`);
+  $('.cpu-dice').append(cpu.createDice(5));
+  $('.cpu-dice').after(`<p>CPU plays ${cpu.playDice()}</p>`);
   $('.next').show();
   $('.submit').hide();
   $('.aaa').hide();
   //$('.player-answer').hide();
   compare();
   $('.result').show();
+  $('h4').show();
   // $('.form').each(function(){
   //   this.reset();
   // })
