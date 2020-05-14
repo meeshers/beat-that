@@ -29,9 +29,8 @@ $('.start').on("click", function (event) {
   $('.buttons').hide();
   $('i').hide();
   $('.scores').show();
+  $('.cpu-dice').show();
   showAll();
-  //insert gameStart here
-  gameStart();
   console.log("start clicked");
 });
 
@@ -63,7 +62,9 @@ $('.submit').on("click", function (event) {
   $('.player-answer').hide();
   compare();
   $('.result').show();
-
+  $('.form').each(function(){
+    this.reset();
+  })
   console.log(`rounds played ${roundsPlayed}`);
 
 })
@@ -71,12 +72,22 @@ $('.submit').on("click", function (event) {
 // clicking on next round should clear both player-dice and cpu-dice 
 // need to add a check for rounds functionality
 $('.next').on("click", function (event) {
-  $('.roll').show();
-  $('submit').show();
-  $('.scores').empty();
-  $('.result').empty();
-  $('.result').hide();
-  console.log("next clicked");
+  if(roundsPlayed<3){
+    $('.roll').show();
+    $('submit').show();
+    $('.scores').empty();
+    $('.next').hide();
+    $('.result').empty();
+    $('.result').hide();
+    $('p').hide();
+    console.log("next clicked");
+  } else {
+    $('.container').empty();
+    $('.container').append('<h2>GAME OVER!</h2>');
+    declareWinner();
+    //$('.next').text('Final result');
+  }
+
 })
 
 function gameStart() {

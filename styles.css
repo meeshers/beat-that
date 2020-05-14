@@ -1,8 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: border-box; 
+}
+
 body {
   color: #f1f1f1;
-  background-color: #3b770a;
-  font-family: Helvetica, sans-serif;
+  /* background-color: #3b770a; */
+  font-family: 'Roboto Slab', serif;
+  background: #093028;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #237A57, #093028);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+  /* background: #52c234; fallback for old browsers */
+  /* background: -webkit-linear-gradient(to top, #52c234, #061700); Chrome 10-25, Safari 5.1-6 *s/
+  /* background: linear-gradient(to top, #52c234, #061700); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 div {
@@ -35,16 +51,22 @@ body, h1, p{
   text-align: center;
   margin: 0;
   padding: 0;
+  font-size: 15px;
 }
 
 h1 {
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 35px;
 }
 
 h3 {
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  font-size: 20px;
 }
-
 
 .container i  {
   font-size: 250px;
@@ -67,4 +89,39 @@ span {
 
 .picked {
   color: red;
+}
+
+.scores {
+  text-align: right;
+}
+
+/**
+ * ----------------------------------------
+ * animation flip-horizontal-top
+ * ----------------------------------------
+ */
+ @-webkit-keyframes flip-horizontal-top {
+  0% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+  }
+}
+@keyframes flip-horizontal-top {
+  0% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+  }
+}
+
+.flip-horizontal-top {
+	-webkit-animation: flip-horizontal-top 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) 0.1s both;
+	        animation: flip-horizontal-top 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) 0.1s both;
 }

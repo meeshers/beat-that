@@ -1,12 +1,12 @@
 console.log("app.js connected");
 
 const diceArray = [ 
-`<i class="fas fa-dice-one"></i>`, 
-`<i class="fas fa-dice-two"></i>`,
-`<i class="fas fa-dice-three"></i>`,
-`<i class="fas fa-dice-four"></i>`,
-`<i class="fas fa-dice-five"></i>`,
-`<i class="fas fa-dice-six"></i>`
+`<i class="fas fa-dice-one flip-horizontal-top"></i>`, 
+`<i class="fas fa-dice-two flip-horizontal-top"></i>`,
+`<i class="fas fa-dice-three flip-horizontal-top"></i>`,
+`<i class="fas fa-dice-four flip-horizontal-top"></i>`,
+`<i class="fas fa-dice-five flip-horizontal-top"></i>`,
+`<i class="fas fa-dice-six flip-horizontal-top"></i>`
 ];
 
 let roundsPlayed = 0;
@@ -34,16 +34,7 @@ const player = {
     this.roundsWon++;
   },
 
-/*   clickDice(event) {
-    if(event.target.classList.contains("picked") === false){
-      //let pickedArray = [];
-      $(event.target).addClass("picked");
-      console.log(event.target);
-      this.playerArray.push("1");
-    }
 
-      console.log(this.playerArray);
-  }, */
 
  /*  retrieveClicks(){
     for(let i = 0; i < this.rollArray.length; i++){
@@ -64,7 +55,7 @@ const cpu = {
   createDice(num) {
     for(let i = 0; i < num; i++){
       this.rollDice();
-      const $create = $(`<span class='${this.numberRoll}'>${diceArray[this.numberRoll-1]}</span>`);
+      const $create = $(`<span class='flip-horizontal-top ${this.numberRoll}'>${diceArray[this.numberRoll-1]}</span>`);
       $('.cpu-dice').append($create);
       this.rollArray.push(this.numberRoll);
     }
@@ -103,6 +94,16 @@ function compare(){
 
 }
 
+function declareWinner(){
+  if(cpu.roundsWon>player.roundsWon){
+    $('.container').append(`CPU WINS THE GAME!`);
+  } else if (player.roundsWon>cpu.roundsWon){
+    $('.container').append('YOU WIN THE GAME!');
+  }else {
+    $('.container').append('TIE! NO ONE WINS');
+  }
+}
+
 //this will take in user input for the dice
 // TODO: work on clearing the field
 const submit = document.querySelector(".submit");
@@ -115,3 +116,23 @@ submit.addEventListener("click", function(event){
 });
 
 
+/* function   clickDice(event) {
+  if(event.target.classList.contains("picked") === false){
+    //let pickedArray = [];
+    $(event.target).addClass("picked");
+    console.log(event.target);
+    //this.playerArray.push("1");
+  }
+
+    //console.log(this.playerArray);
+}
+ */
+
+ function clickDice(event){
+   if(event.target.classList.contains("picked")===false){
+     console.log(event.target);
+     $(event.target).addClass("picked");
+   }
+ }
+ 
+ $('i').on('click',clickDice);         
