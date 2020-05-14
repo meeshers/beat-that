@@ -87,14 +87,5 @@ $('.next').on("click", function (event) {
     $('.container').append('<h2>GAME OVER!</h2>');
     declareWinner();
     $('.refresh').show();
-    //$('.next').text('Final result');
   }
-
 })
-
-function gameStart() {
-  // empty cpu and player dice container
-  // need recurring 
-
-}
-
