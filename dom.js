@@ -60,7 +60,7 @@ $('.roll').on("click", function (event) {
 $('.submit').on("click", function (event) {
   $('.cpu-dice').empty();
   $('.cpu-dice').append(cpu.createDice(5));
-  $('.cpu-dice').after(`<p>CPU plays ${cpu.playDice()}</p>`);
+  $('.cpu-dice').after(`<p>CPU plays ${cpu.playDice()}!</p>`);
   $('.next').show();
   $('.submit').hide();
   $('.aaa').hide();

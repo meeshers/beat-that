@@ -164,7 +164,7 @@ const submit = document.querySelector(".submit");
 submit.addEventListener("click", function (event) {
   const p = document.createElement('p');
   //player.playerResponse = document.querySelector('.player-answer');
-  p.textContent = `You played ${player.playerArray.join("")}`;
+  p.textContent = `You played ${player.playerArray.join("")}!`;
   const dice = document.querySelector('.player-dice');
   dice.append(p);
 });
