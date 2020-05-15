@@ -19,7 +19,7 @@
 
 // after all rounds played, it will display the overall winner
 
-<img src="/project-zero-wireframe.jpg" alt="wireframe" srcset="">
+![WIREFRAME] (https://git.generalassemb.ly/meeshers/project-zero/blob/master/project-zero-wireframe.jpg)
 
 <!-- EXTRAS -->
 - When MVP complete, work on difficulty option 
