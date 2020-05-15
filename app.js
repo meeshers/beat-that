@@ -148,7 +148,7 @@ function compare() {
 
 function declareWinner() {
   if (cpu.roundsWon > player.roundsWon) {
-    $('.container').append(`CPU WINS THE GAME!`);
+    $('.container').append(`CPU WINS THE GAME! `);
     $('.container').append(`CPU won ${cpu.roundsWon} rounds!`);
   } else if (player.roundsWon > cpu.roundsWon) {
     $('.container').append('YOU WIN THE GAME!');
